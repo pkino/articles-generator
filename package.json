@@ -1,0 +1,22 @@
+{
+  "name": "articles-generator",
+  "version": "1.0.0",
+  "description": "You can generate articles from github issues.",
+  "main": "main.js",
+  "scripts": {
+    "test": "build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pkino/articles-generator.git"
+  },
+  "author": "pkino",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pkino/articles-generator/issues"
+  },
+  "homepage": "https://github.com/pkino/articles-generator#readme",
+  "dependencies": {
+    "octonode": "^0.9.5"
+  }
+}
