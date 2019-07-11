@@ -4,7 +4,7 @@
   "description": "You can generate articles from github issues.",
   "main": "main.js",
   "scripts": {
-    "test": ""
+    "build": "browserify extension.js -o content.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,11 @@
   "dependencies": {},
   "devDependencies": {
     "@octokit/rest": "^16.28.3",
-    "node-fetch": "^2.6.0",
-    "request": "^2.88.0"
-  }
+    "browserify": "^16.3.0",
+    "browserify-fs": "^1.0.0",
+    "jquery": "^3.4.1"
+  },
+  "permissions": [
+    "storage"
+  ]
 }
