@@ -8,14 +8,11 @@ if (process.argv[5] !== undefined) {
    octokit = new Octokit()
 }
 const fs = require('fs')
-const req = require('request')
-const fetch = require('node-fetch')
 
 main()
 
 
 async function main() {
-
    let pr
    try {
       pr = await getPR(process.argv[2], process.argv[3], Number(process.argv[4]))
