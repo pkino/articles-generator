@@ -4,7 +4,7 @@
   "description": "You can generate articles from github issues.",
   "main": "main.js",
   "scripts": {
-    "test": "build"
+    "test": ""
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,10 @@
     "url": "https://github.com/pkino/articles-generator/issues"
   },
   "homepage": "https://github.com/pkino/articles-generator#readme",
-  "dependencies": {
-    "octonode": "^0.9.5"
+  "dependencies": {},
+  "devDependencies": {
+    "@octokit/rest": "^16.28.3",
+    "node-fetch": "^2.6.0",
+    "request": "^2.88.0"
   }
 }
