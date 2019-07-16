@@ -1,5 +1,5 @@
 # articles-generator
-You can generate an artilce(`.md` file) form your github Pull Requests.
+You can generate an artilce(`.md` file) from your github Pull Requests.
 
 ## set up
 ```
