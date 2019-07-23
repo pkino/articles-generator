@@ -14,5 +14,5 @@ npm i
 If you want to generate from private repogitories, you need a personal access token.
 
 ```
- owner repositry pullRequestNumber token(option)
- ```
+node main.js owner repositry pullRequestNumber token(option)
+```
