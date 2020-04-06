@@ -3,7 +3,7 @@ You can generate an artilce(`.md` file) from github Pull Requests.
 
 ## set up
 ```
-npm i 
+$ npm i 
 ```
 ## run with chrome extension
 - You have to load this directory from chrome.
@@ -14,5 +14,5 @@ npm i
 If you want to generate from private repogitories, you need a personal access token.
 
 ```
-node main.js owner repositry pullRequestNumber token(option)
+$ node main.js owner repositry pullRequestNumber token(option)
 ```
