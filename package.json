@@ -16,10 +16,9 @@
     "url": "https://github.com/pkino/articles-generator/issues"
   },
   "homepage": "https://github.com/pkino/articles-generator#readme",
-  "dependencies": {},
   "devDependencies": {
     "@octokit/rest": "^16.28.3",
-    "browserify": "^16.3.0",
+    "browserify": "^16.5.2",
     "browserify-fs": "^1.0.0",
     "jquery": "^3.5.0"
   },
