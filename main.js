@@ -1,63 +1,25 @@
-const Octokit = require('@octokit/rest')
-let octokit
-if (process.argv[5] !== undefined) {
-   octokit = new Octokit({
-      auth: process.argv[5]
-   })
-} else {
-   octokit = new Octokit()
-}
-const fs = require('fs')
-
-main()
-
+const fs = require('fs');
+const { getOctokit, getPR, getCompare, generateArticle } = require('./common.js');
 
 async function main() {
-   let pr
-   try {
-      pr = await getPR(process.argv[2], process.argv[3], Number(process.argv[4]))
-   } catch (e) {
-      console.log(e)
-   }
+    const owner = process.argv[2];
+    const repo = process.argv[3];
+    const pullNumber = Number(process.argv[4]);
+    const token = process.argv[5];
 
-   let compare
-   try {
-      compare = await getCompare(process.argv[2], process.argv[3], pr.data.base.sha, pr.data.head.sha)
-   } catch (e) {
-      console.log(e)
-   }
+    const octokit = getOctokit(token);
 
-   diffFiles = compare.data.files
+    try {
+        const pr = await getPR(octokit, owner, repo, pullNumber);
+        const compare = await getCompare(octokit, owner, repo, pr.data.base.sha, pr.data.head.sha);
+        const diffFiles = compare.data.files;
+        const article = generateArticle(pr, diffFiles);
 
-   fileName = 'article.md'
-   fs.writeFileSync(fileName, '# ')
-   fs.appendFileSync(fileName, pr.data.title + '\n\n')
-   fs.appendFileSync(fileName, '# 方法\n\n')
-   fs.appendFileSync(fileName, pr.data.body + '\n\n')
-   fs.appendFileSync(fileName, '# 実装\n\n')
-
-   for (var i = 0; i < diffFiles.length; i++) {
-      fs.appendFileSync(fileName, '```\n' + diffFiles[i].patch + '\n```\n\n')
-   }
+        fs.writeFileSync('article.md', article);
+        console.log('Article generated successfully: article.md');
+    } catch (error) {
+        console.error('Error generating article:', error);
+    }
 }
 
-async function getPR(owner, repo, num) {
-   res = await octokit.pulls.get({
-      owner: owner,
-      repo: repo,
-      pull_number: num
-   })
-
-   return res
-}
-
-async function getCompare(owner, repo, base, head) {
-   res = await octokit.repos.compareCommits({
-      owner: owner,
-      repo: repo,
-      base: base,
-      head: head
-   })
-
-   return res
-}
+main();
